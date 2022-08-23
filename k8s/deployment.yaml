@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discard
+  template:
+    metadata:
+      labels:
+        app: discard
+    spec:
+      containers:
+      - image: okteto.dev/discard:latest
+        name: discard
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: Vless_UUID
+          value: "b69550e7-6035-4a79-be0e-14630fe20c3a"
+        - name: Vless_Path
+          value: "/vl0823"
+        - name: Vmess_UUID
+          value: "b69550e7-6035-4a79-be0e-14630fe20c3a"
+        - name: Vmess_Path
+          value: "/vm0823"
+        - name: Share_Path
+          value: "/v2link"
